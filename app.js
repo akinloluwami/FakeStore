@@ -17,7 +17,7 @@ fetch("https://fakestoreapi.com/products")
   .then((data) => {
     data.forEach(function (product) {
       //destructure the product object
-      const { title, price, image, rating } = product;
+      const { id, title, price, image, rating } = product;
 
       /******truncate the title if it is longer than 20 characters*************/
       const shortTitle =
@@ -46,7 +46,7 @@ fetch("https://fakestoreapi.com/products")
 
       /***create template for each product**************************/
       const productData = `
-          <div class="product">
+          <div class="product" data-id="${id}">
           <i class="fal fa-heart"></i>
           <i class="fal fa-plus"></i>
           <img src="${image}" alt="" />
@@ -57,6 +57,7 @@ fetch("https://fakestoreapi.com/products")
           `;
       /*****************************************************************************/
 
+      //add event listner to the heart icon
       //append the product template to the products container
       products.innerHTML += productData;
     });
